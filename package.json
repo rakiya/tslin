@@ -4,6 +4,7 @@
   "description": "This package add rich methods like Kotlin to your project.",
   "main": "src/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rakiya/tslin/issues"
   },
-  "homepage": "https://github.com/rakiya/tslin#readme"
+  "homepage": "https://github.com/rakiya/tslin#readme",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
 }

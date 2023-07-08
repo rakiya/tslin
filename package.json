@@ -1,0 +1,19 @@
+{
+  "name": "@rakiya/tslin",
+  "version": "0.0.1",
+  "description": "This package add rich methods like Kotlin to your project.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rakiya/tslin.git"
+  },
+  "author": "rakiya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rakiya/tslin/issues"
+  },
+  "homepage": "https://github.com/rakiya/tslin#readme"
+}

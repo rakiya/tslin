@@ -1,2 +1,2 @@
-import "./standard"
-import "./collections/arrays"
+export * from "./standard"
+export * from "./collections/arrays"

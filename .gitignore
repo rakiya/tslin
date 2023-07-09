@@ -132,3 +132,5 @@ dist
 *.js
 *.js.map
 *.d.ts
+!.eslintrc.js
+!.prettierrc.js

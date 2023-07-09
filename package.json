@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest --silent=false"
+    "test": "jest --silent=false",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",

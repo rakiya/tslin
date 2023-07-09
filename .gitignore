@@ -134,3 +134,4 @@ dist
 *.d.ts
 !.eslintrc.js
 !.prettierrc.js
+!jest.config.js

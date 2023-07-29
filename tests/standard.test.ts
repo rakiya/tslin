@@ -2,12 +2,12 @@ import "@/index"
 import { repeat } from "@/standard"
 
 test("let", () => {
-  const num = "123".let((it: string) => Number(it))
+  const num = "123".let((it) => Number(it))
   expect(num).toEqual(123)
 })
 
 test("also", () => {
-  const str = "123".also((it: string) => Number(it))
+  const str = "123".also((it) => Number(it))
   expect(str).toEqual("123")
 })
 

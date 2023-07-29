@@ -9,20 +9,20 @@ declare global {
   }
 }
 
-Object.prototype.let = function <T, R>(block: (_: T) => R): R {
+Object.prototype.let = function <T, R>(this: T, block: (_: T) => R): R {
   return block(this as T)
 }
 
-Object.prototype.also = function <T>(block: (_: T) => void): T {
+Object.prototype.also = function <T>(this: T, block: (_: T) => void): T {
   block(this as T)
   return this as T
 }
 
-Object.prototype.takeIf = function <T>(predicate: (_: T) => boolean): T | undefined {
+Object.prototype.takeIf = function <T>(this: T, predicate: (_: T) => boolean): T | undefined {
   return predicate(this as T) ? (this as T) : undefined
 }
 
-Object.prototype.takeUnless = function <T>(predicate: (_: T) => boolean): T | undefined {
+Object.prototype.takeUnless = function <T>(this: T, predicate: (_: T) => boolean): T | undefined {
   return !predicate(this as T) ? (this as T) : undefined
 }
 

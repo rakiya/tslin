@@ -41,3 +41,23 @@ describe("groupBy", () => {
     )
   })
 })
+
+describe("zip", () => {
+  test("The target is longer", () => {
+    const target = [1, 2, 3]
+    const other = ["a", "b"]
+    expect(target.zip(other)).toEqual([
+      [1, "a"],
+      [2, "b"],
+    ])
+  })
+
+  test("The other is longer", () => {
+    const target = [1, 2]
+    const other = ["a", "b", "c"]
+    expect(target.zip(other)).toEqual([
+      [1, "a"],
+      [2, "b"],
+    ])
+  })
+})

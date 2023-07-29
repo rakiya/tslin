@@ -1,3 +1,5 @@
+import { repeat } from ".."
+
 export {}
 
 declare global {
@@ -7,6 +9,7 @@ declare global {
     indices(): Array<number>
     lastIndex(): number
     groupBy<K, T>(keySelector: (_: T) => K): Map<K, T[]>
+    zip<U>(other: Array<U>): Array<[T, U]>
   }
 }
 
@@ -41,4 +44,13 @@ Array.prototype.groupBy = function <K, T>(keySelector: (_: T) => K): Map<K, T[]>
   })
 
   return result
+}
+
+Array.prototype.zip = function <T, U>(this: Array<T>, other: Array<U>): Array<[T, U]> {
+  const n = Math.min(this.length, other.length)
+  const zipped = new Array(n)
+
+  repeat(n, (i) => (zipped[i] = [this[i], other[i]]))
+
+  return zipped
 }

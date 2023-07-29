@@ -36,3 +36,4 @@ console.log(countOfWords) // 4
 - `Array.isNotEmpty(): boolean`
 - `Array.indices(): Array<number>`
 - `Array.lastIndex(): number`
+- `Array.groupBy<K, T>(keySelector: (_: T) => K): Map<K, T[]>`

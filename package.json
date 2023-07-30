@@ -7,9 +7,9 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --silent=false",
-    "publish": "npm pulish --access publish",
-    "prepublish": "npm run build",
-    "postpublish": "find ./src -name '*.d.ts' -delete -or -name '*.js' -delete -or -name '*.js.map' -delete && find ./tests -name '*.d.ts' -delete -or -name '*.js' -delete -or -name '*.js.map' -delete"
+    "release": "npm publish",
+    "prerelease": "npm run build",
+    "postrelease": "find ./src -name '*.d.ts' -delete -or -name '*.js' -delete -or -name '*.js.map' -delete && find ./tests -name '*.d.ts' -delete -or -name '*.js' -delete -or -name '*.js.map' -delete"
   },
   "repository": {
     "type": "git",

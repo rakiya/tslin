@@ -61,3 +61,17 @@ describe("zip", () => {
     ])
   })
 })
+
+describe("sample", () => {
+  test("The array has a element", () => {
+    expect([1].sample()).toEqual([1])
+  })
+
+  test("The array is many elements", () => {
+    const target = ["a", "b", "c", "d", "e", "f", "g"]
+    const samples = target.sample(2)
+    console.log(samples)
+    expect(target).toContain(samples[0])
+    expect(target).toContain(samples[1])
+  })
+})

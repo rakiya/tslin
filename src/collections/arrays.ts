@@ -1,4 +1,5 @@
 import { repeat } from ".."
+import { range } from "./range"
 
 export {}
 
@@ -10,6 +11,7 @@ declare global {
     lastIndex(): number
     groupBy<K, T>(keySelector: (_: T) => K): Map<K, T[]>
     zip<U>(other: Array<U>): Array<[T, U]>
+    sample(count?: number): Array<T>
   }
 }
 
@@ -53,4 +55,21 @@ Array.prototype.zip = function <T, U>(this: Array<T>, other: Array<U>): Array<[T
   repeat(n, (i) => (zipped[i] = [this[i], other[i]]))
 
   return zipped
+}
+
+Array.prototype.sample = function <T>(this: Array<T>, sampleSize: number = 1): Array<T> {
+  let indices = [...range(0, this.length)]
+  const size = indices.length
+
+  repeat(size, (i: number) => {
+    const j = i + Math.floor(Math.random() * (size - i))
+    let tmp = indices[i]
+    indices[i] = indices[j]
+    indices[j] = tmp
+  })
+
+  return indices
+    .slice(0, sampleSize)
+    .sort()
+    .map((i) => this[i])
 }

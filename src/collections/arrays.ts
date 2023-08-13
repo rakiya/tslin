@@ -12,6 +12,7 @@ declare global {
     groupBy<K, T>(keySelector: (_: T) => K): Map<K, T[]>
     zip<U>(other: Array<U>): Array<[T, U]>
     sample(count?: number): Array<T>
+    shuffle(): Array<T>
   }
 }
 
@@ -72,4 +73,18 @@ Array.prototype.sample = function <T>(this: Array<T>, sampleSize: number = 1): A
     .slice(0, sampleSize)
     .sort()
     .map((i) => this[i])
+}
+
+Array.prototype.shuffle = function <T>(this: Array<T>): Array<T> {
+  let indices = [...range(0, this.length)]
+  const size = indices.length
+
+  repeat(size, (i: number) => {
+    const j = i + Math.floor(Math.random() * (size - i))
+    let tmp = indices[i]
+    indices[i] = indices[j]
+    indices[j] = tmp
+  })
+
+  return indices.map((i) => this[i])
 }

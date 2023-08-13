@@ -75,3 +75,17 @@ describe("sample", () => {
     expect(target).toContain(samples[1])
   })
 })
+
+describe("shuffle", () => {
+  test("The array has a element", () => {
+    expect(["a"].shuffle()).toEqual(["a"])
+  })
+
+  test("The array is many elements", () => {
+    const target = ["a", "b", "c", "d", "e", "f", "g"]
+    const shuffled = target.shuffle()
+    console.log(shuffled)
+    expect(shuffled).not.toEqual(target)
+    shuffled.forEach((it) => expect(target).toContain(it))
+  })
+})

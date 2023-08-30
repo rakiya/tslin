@@ -89,3 +89,21 @@ describe("shuffle", () => {
     shuffled.forEach((it) => expect(target).toContain(it))
   })
 })
+
+describe("sortBy", () => {
+  class Element {
+    constructor(readonly value: number) {}
+  }
+
+  it("sorts in ascending order", () => {
+    const elements = [new Element(1), new Element(2), new Element(3), new Element(4), new Element(5)]
+
+    expect(elements.shuffle().sortBy((it) => it.value)).toEqual(elements)
+  })
+
+  it("sorts in descending order", () => {
+    const elements = [new Element(1), new Element(2), new Element(3), new Element(4), new Element(5)]
+
+    expect(elements.shuffle().sortBy((it) => -it.value)).toEqual(elements.reverse())
+  })
+})

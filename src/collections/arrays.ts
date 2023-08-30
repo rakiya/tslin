@@ -13,6 +13,7 @@ declare global {
     zip<U>(other: Array<U>): Array<[T, U]>
     sample(count?: number): Array<T>
     shuffle(): Array<T>
+    sortBy<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): Array<T>
   }
 }
 
@@ -87,4 +88,11 @@ Array.prototype.shuffle = function <T>(this: Array<T>): Array<T> {
   })
 
   return indices.map((i) => this[i])
+}
+
+Array.prototype.sortBy = function <T, R extends number | bigint>(
+  this: Array<T>,
+  selector: (_: T) => R,
+): Array<T> {
+  return this.sort((e1, e2) => selector(e1) - selector(e2))
 }

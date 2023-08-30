@@ -159,3 +159,33 @@ describe("minByOrUndefined", () => {
     })
   })
 })
+
+describe("firstOrUndefined", () => {
+  describe("An array is empty", () => {
+    it("returns undefined", () => {
+      expect(new Array<number>().firstOrUndefined()).toBeUndefined()
+    })
+  })
+
+  describe("An array has many elements", () => {
+    it("returns the first element", () => {
+      const elements = [1, 2, 3]
+      expect(elements.firstOrUndefined()).toEqual(1)
+    })
+  })
+})
+
+describe("lastOrUndefined", () => {
+  describe("An array is empty", () => {
+    it("returns undefined", () => {
+      expect(new Array<number>().lastOrUndefined()).toBeUndefined()
+    })
+  })
+
+  describe("An array has many elements", () => {
+    it("returns the last element", () => {
+      const elements = [1, 2, 3]
+      expect(elements.lastOrUndefined()).toEqual(3)
+    })
+  })
+})

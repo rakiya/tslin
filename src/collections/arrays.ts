@@ -16,6 +16,8 @@ declare global {
     sortBy<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): Array<T>
     maxByOrUndefined<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): T | undefined
     minByOrUndefined<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): T | undefined
+    firstOrUndefined(): T | undefined
+    lastOrUndefined(): T | undefined
   }
 }
 
@@ -149,4 +151,20 @@ Array.prototype.minByOrUndefined = function <T, R extends number | bigint>(
   }
 
   return minElement
+}
+
+Array.prototype.firstOrUndefined = function <T>(): T | undefined {
+  if (this.isEmpty()) {
+    return undefined
+  }
+
+  return this[0]
+}
+
+Array.prototype.lastOrUndefined = function <T>(): T | undefined {
+  if (this.isEmpty()) {
+    return undefined
+  }
+
+  return this[this.lastIndex()]
 }

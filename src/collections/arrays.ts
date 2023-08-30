@@ -9,7 +9,7 @@ declare global {
     isNotEmpty(): boolean
     indices(): Array<number>
     lastIndex(): number
-    groupBy<K, T>(keySelector: (_: T) => K): Map<K, T[]>
+    groupBy<K, T>(this: Array<T>, keySelector: (_: T) => K): Map<K, T[]>
     zip<U>(other: Array<U>): Array<[T, U]>
     sample(count?: number): Array<T>
     shuffle(): Array<T>
@@ -32,7 +32,7 @@ Array.prototype.lastIndex = function (): number {
   return this.length - 1
 }
 
-Array.prototype.groupBy = function <K, T>(keySelector: (_: T) => K): Map<K, T[]> {
+Array.prototype.groupBy = function <K, T>(this: Array<T>, keySelector: (_: T) => K): Map<K, T[]> {
   const result = new Map<K, T[]>()
 
   this.forEach((element) => {

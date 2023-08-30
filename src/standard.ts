@@ -2,10 +2,10 @@ export {}
 
 declare global {
   interface Object {
-    let<T, R>(block: (_: T) => R): R
-    also<T>(block: (_: T) => void): T
-    takeIf<T>(predicate: (_: T) => boolean): T | undefined
-    takeUnless<T>(predicate: (_: T) => boolean): T | undefined
+    let<T, R>(this: T, block: (_: T) => R): R
+    also<T>(this: T, block: (_: T) => void): T
+    takeIf<T>(this: T, predicate: (_: T) => boolean): T | undefined
+    takeUnless<T>(this: T, predicate: (_: T) => boolean): T | undefined
   }
 }
 

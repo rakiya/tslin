@@ -33,7 +33,7 @@ test("lastIndex", () => {
 
 describe("groupBy", () => {
   test("array is not empty", () => {
-    expect([1, 2, 3].groupBy((e: number) => e % 2 === 0)).toEqual(
+    expect([1, 2, 3].groupBy((e) => e % 2 === 0)).toEqual(
       new Map([
         [true, [2]],
         [false, [1, 3]],

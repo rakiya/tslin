@@ -14,6 +14,8 @@ declare global {
     sample(count?: number): Array<T>
     shuffle(): Array<T>
     sortBy<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): Array<T>
+    maxByOrUndefined<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): T | undefined
+    minByOrUndefined<T, R extends number | bigint>(this: Array<T>, selector: (_: T) => R): T | undefined
   }
 }
 
@@ -95,4 +97,56 @@ Array.prototype.sortBy = function <T, R extends number | bigint>(
   selector: (_: T) => R,
 ): Array<T> {
   return this.sort((e1, e2) => selector(e1) - selector(e2))
+}
+
+Array.prototype.maxByOrUndefined = function <T, R extends number | bigint>(
+  this: Array<T>,
+  selector: (_: T) => R,
+): T | undefined {
+  if (this.isEmpty()) {
+    return undefined
+  }
+
+  let maxElement = this[0]
+  if (this.length === 1) {
+    return maxElement
+  }
+
+  let maxValue = selector(maxElement)
+  for (let i of range(1, this.length)) {
+    let e = this[i]
+    let v = selector(e)
+    if (maxValue < v) {
+      maxElement = e
+      maxValue = v
+    }
+  }
+
+  return maxElement
+}
+
+Array.prototype.minByOrUndefined = function <T, R extends number | bigint>(
+  this: Array<T>,
+  selector: (_: T) => R,
+): T | undefined {
+  if (this.isEmpty()) {
+    return undefined
+  }
+
+  let minElement = this[0]
+  if (this.length === 1) {
+    return minElement
+  }
+
+  let minValue = selector(minElement)
+  for (let i of range(1, this.length)) {
+    let e = this[i]
+    let v = selector(e)
+    if (v < minValue) {
+      minElement = e
+      minValue = v
+    }
+  }
+
+  return minElement
 }

@@ -107,3 +107,55 @@ describe("sortBy", () => {
     expect(elements.shuffle().sortBy((it) => -it.value)).toEqual(elements.reverse())
   })
 })
+
+describe("maxByOrUndefined", () => {
+  class Element {
+    constructor(readonly value: number) {}
+  }
+
+  describe("An array is empty", () => {
+    it("returns undefined", () => {
+      expect(new Array<Element>().maxByOrUndefined((it) => it.value)).toBeUndefined()
+    })
+  })
+
+  describe("An array has an element", () => {
+    it("returns the first element", () => {
+      const elements = [new Element(1)]
+      expect(elements.maxByOrUndefined((it) => it.value)).toEqual(elements[0])
+    })
+  })
+
+  describe("An array has many elements", () => {
+    it("returns the element having a max value", () => {
+      const elements = [new Element(1), new Element(3), new Element(2)]
+      expect(elements.maxByOrUndefined((it) => it.value)).toEqual(elements[1])
+    })
+  })
+})
+
+describe("minByOrUndefined", () => {
+  class Element {
+    constructor(readonly value: number) {}
+  }
+
+  describe("An array is empty", () => {
+    it("returns undefined", () => {
+      expect(new Array<Element>().minByOrUndefined((it) => it.value)).toBeUndefined()
+    })
+  })
+
+  describe("An array has an element", () => {
+    it("returns the first element", () => {
+      const elements = [new Element(1)]
+      expect(elements.minByOrUndefined((it) => it.value)).toEqual(elements[0])
+    })
+  })
+
+  describe("An array has many elements", () => {
+    it("returns the element having a min value", () => {
+      const elements = [new Element(2), new Element(1), new Element(3)]
+      expect(elements.minByOrUndefined((it) => it.value)).toEqual(elements[1])
+    })
+  })
+})

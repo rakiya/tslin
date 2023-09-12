@@ -1,3 +1,3 @@
 export * from "./collections/arrays"
 export * from "./collections/range"
-export * from "./standard"
+export * from "./standards"

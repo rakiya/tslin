@@ -1,5 +1,5 @@
 import "@/index"
-import { repeat } from "@/standard"
+import { repeat } from "@/standards"
 
 test("let", () => {
   const num = "123".let((it) => Number(it))
